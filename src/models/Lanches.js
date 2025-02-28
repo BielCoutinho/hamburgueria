@@ -1,23 +1,25 @@
-const { model, Schema } = require('mongoose')
+const mongoose = require('mongoose')
 
-//criação da estrutura de dados ("coleção") que será usada no banco
-const lancheSchema = new Schema({
+const lancheSchema = new mongoose.Schema({
     nomeLanche: {
-        type: String
+        type: String,
+        required: true,
+        unique: true, // Garantir que o nome do lanche seja único
     },
     descricaoLanche: {
-        type: String
+        type: String,
+        required: true,
     },
     precoLanche: {
-        type: String
-       
+        type: Number,
+        required: true,
     },
     imagemLanche: {
-        type: String
-            
+        type: String,
     }
-}, {versionKey: false})
+})
 
-//importação do modelo de dados
-//obs: Clientes será o noime da coleção
-module.exports = model('Lanches', lancheSchema)
+// Criando o modelo
+const lancheModel = mongoose.model('Lanche', lancheSchema)
+
+module.exports = lancheModel

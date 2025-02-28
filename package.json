@@ -2,7 +2,7 @@
   "name": "hamburgueria",
   "version": "1.0.0",
   "description": "Atividade",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,15 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/BielCoutinho/hamburgueria.git"
   },
-  "author": "Gabriel Coutinho, Elen Grecco, Wesley de Souza",
+  "author": "Bruno Dorea, Elen Grecco, Erica Viana, Gabriel Coutinho, Wesley Souza",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/BielCoutinho/hamburgueria/issues"
   },
   "homepage": "https://github.com/BielCoutinho/hamburgueria#readme",
   "dependencies": {
-    "mongodb": "^6.13.1",
-    "mongoose": "^8.10.2",
+    "mongoose": "^8.11.0",
     "string-similarity": "^4.0.4"
   }
 }
