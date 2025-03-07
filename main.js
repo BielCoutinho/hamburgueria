@@ -78,17 +78,16 @@ const buscarLanche = async (nome) => {
         console.log(error)
     }
 }
-
 // CRUD Update - Função para alterar os dados de um cliente
 // Atenção!!! Obrigatóriamente o update precisa ser feito com base no ID do cliente 
-const atulizarLanche = async (id, nomeLan, descricaoLan, precoLan ) => {
+const atualizarLanche = async (id, nomeLan, descricaoLan, precoLan) => {
     try {
-        const cliente = await clienteModel.findByIdAndUpdate(
+        const lanche = await lancheModel.findByIdAndUpdate(
             id,
             {
                nomeLanche: nomeLan,
                descricaoLanche: descricaoLan,
-               precoLanche: precoLan
+               precoLanche: precoLan 
             },
             {
                 new: true,
@@ -100,11 +99,30 @@ const atulizarLanche = async (id, nomeLan, descricaoLan, precoLan ) => {
         if (!lanche) {
             console.log("Lanche não encontrado")
         } else {
-            console.log("Dados do lanche alterado com sucesso")
+            console.log("Dados do Lanche alterado com sucesso")
         }
     } catch (error) {
         console.log(error)
         
+    }
+}
+
+// CRUD Delete - Função para excluir um lanche
+// ATENÇÃO !!! - Obrigatóriamente a exclusão é feita pelo ID
+
+const deletarLanche = async (id) => {
+    try {
+        // A linha abaixo exclui o lanche do bando de dados 
+        const lanche = await lancheModel.findOneAndDelete(id)
+        //validação
+        if (!lanche) {
+            console.log("Lanche não encontrado")
+            
+        } else {
+            console.log("Lanche deletado.")
+        }
+    } catch (error) {
+        console.log(error)
     }
 }
 
@@ -114,9 +132,11 @@ const app = async () => {
     // CRUD - Create
     // await criarLanche("Churros com Doce de Leite", "Massa de churros, doce de leite, açúcar e canela", 8.00)
     // await listarLanches()
-    await buscarLanche("Big Mac")
-    await atulizarCliente('67c10a5ae604083c7328329f', 'Big Mac', 'Pão, queijo cheddar, picles', '25.99')
-    await buscarLanche("Big Mac")
+    await buscarLanche("Sanduíche Natural de Atum")
+    await atualizarLanche('67c10d3e7664ec02e8babaf2', 'Sanduíche Natural de Atum', 'Pão integral, atum, maionese, alface, cenoura ralada, tomate', '17')
+    await buscarLanche("Sanduíche Natural de Atum")
+   //await deletarLanche ("67c10cbda1f27b5a92935b0c")
+   //await listarLanches()
     await desconectar()
 }
 
